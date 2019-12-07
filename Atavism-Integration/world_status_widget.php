@@ -88,17 +88,17 @@ class WorldStatusWidget extends WP_Widget
 			$conn->close();
 			if (!empty($options[ 'atavism_admin_db'.strval($cnt).'_hostname_string' ])) {
 				if ( $authup == true ) {
-					echo $options[ 'atavism_world' . strval( $cnt ) . '_name_string' ] . ':<br> Auth <img width="32" height="32" style=vertical-align:middle title="Auth Server Online" name="online" alt="online" src="' . plugins_url( 'images/online.png', __FILE__ ) . '" border="0" />';
+					echo $options[ 'atavism_world' . strval( $cnt ) . '_name_string' ] . ':<br> Login Server <img width="32" height="32" style=vertical-align:middle title="Auth Server Online" name="online" alt="online" src="' . plugins_url( 'images/online.png', __FILE__ ) . '" border="0" />';
 
 				} else {
-					echo $options[ 'atavism_world' . strval( $cnt ) . '_name_string' ] . ':<br> Auth <img width="32" height="32" style=vertical-align:middle title="Auth Server Offine" name="offline" alt="online" src="' . plugins_url( 'images/offline.png', __FILE__ ) . '" border="0" />';
+					echo $options[ 'atavism_world' . strval( $cnt ) . '_name_string' ] . ':<br> Login Server <img width="32" height="32" style=vertical-align:middle title="Auth Server Offine" name="offline" alt="online" src="' . plugins_url( 'images/offline.png', __FILE__ ) . '" border="0" />';
 				}
 			}
 	    if ( $worldup == true ) {
-		    echo ' World <img width="32" height="32" style=vertical-align:middle title="World Server Online" name="online" alt="online" src="' . plugins_url( 'images/online.png', __FILE__ ) . '" border="0" /><br>';
+		    echo ' World Server <img width="32" height="32" style=vertical-align:middle title="World Server Online" name="online" alt="online" src="' . plugins_url( 'images/online.png', __FILE__ ) . '" border="0" /><br>';
 	    }
 	    if ( $worldup != true ) {
-		    echo ' World <img width="32" height="32" style=vertical-align:middle title="Auth Server Offine" name="offline" alt="online" src="' . plugins_url( 'images/offline.png', __FILE__ ) . '" border="0" /><br>';
+		    echo ' World Server <img width="32" height="32" style=vertical-align:middle title="Auth Server Offine" name="offline" alt="online" src="' . plugins_url( 'images/offline.png', __FILE__ ) . '" border="0" /><br>';
 	    }
 	    $cnt = $cnt + 1;
 		}

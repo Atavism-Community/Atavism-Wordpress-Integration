@@ -1,10 +1,11 @@
 <?php
 require_once(rtrim($_SERVER['DOCUMENT_ROOT'], '/') . '/wp-load.php');
+
 $userLogin = $_POST['user'];
-//$userLogin = $_REQUEST['user'];
-$password = $_POST['password'];
-//$password = $_REQUEST['password'];
+$password  = $_POST['password'];
+
 checkCustomer($userLogin, $password);
+
 function checkCustomer($userLogin, $password) {
 	error_log("checking customer: " .$userLogin);
 	$options = get_option('atavism_plugin_options');
@@ -20,7 +21,25 @@ function checkCustomer($userLogin, $password) {
 		$integration_options = get_option('atavism_plugin_options');
 		$user = get_user_by( 'login', $userLogin );
 		$id = strval($user->ID);
-		//echo '$id is'.$id;exit();
+
+		// ------------------------------------------------------------------------------------------- //
+		// @feature: disabled game login via website
+		// @plugin you need: https://wordpress.org/plugins/wp-cerber/
+		// @desc: when user login is disabled with cerber the user cant login in game
+		// @notice: you dont need to install the plugin cerb. without the check doesnt work, thats all
+		// ------------------------------------------------------------------------------------------- //
+
+		global $wpdb;
+		$table_name = $wpdb->prefix . "usermeta";
+		$query = $wpdb->get_results( "SELECT user_id, meta_key FROM $table_name WHERE user_id = '$id' AND meta_key = '_crb_blocked'" );
+
+		if ( count( $query ) > 0 ) {
+			echo "-1, user banned ";
+			exit();
+		}
+
+		// ------------------------------------------------------------------------------------------- //
+		
 		if ( $user && wp_check_password( $password, $user->data->user_pass, $id) ) {
 			if($integration_options['subscription'] == '2'){
 				global $wpdb;
@@ -42,15 +61,22 @@ function checkCustomer($userLogin, $password) {
 				} else {
 					echo "-1, no active subscription";
 				}
-			}else{
-				$sql    = "SELECT status FROM account WHERE id = '$id'";
-				$result = $mysqli_conn->query( $sql );
-				foreach ( $result as $data ) {
+			} else {
 
+				$sql = "SELECT status FROM account WHERE id = '$id'";
+
+				$result = $mysqli_conn->query( $sql );
+
+				if(!mysqli_num_rows($result)) {
+					echo($user->ID);
+				}		
+				
+				foreach ( $result as $data ) {
 					if ( empty( $data['status'] ) ) {
 						echo "-1, user banned ";
+						exit();
 					} else {
-						echo $user->ID;
+						echo($user->ID);
 					}
 				}
 			}

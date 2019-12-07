@@ -3,7 +3,7 @@
 Plugin Name: Atavism Integration
 Plugin URI: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9T6NJ747QR8PU&source=url
 Description: Atavism Online Server integration plugin for Wordpress
-Version: 1.0.2
+Version: 1.1.2
 Author: Scott Meadows
 Author URI: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9T6NJ747QR8PU&source=url
 License: GPLv2 or later
