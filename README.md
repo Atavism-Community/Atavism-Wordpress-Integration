@@ -1,8 +1,13 @@
 # Atavism-Wordpress-Integration
 GPLv2 or later WordPress goodness for the Atavism Community.
 
-quick starter list.
+# Welcome
+Feel free to ask for join to the Atavism Community all are welcome. Pull requests welcome and encouraged.
 
+# First Step
+Someone test this codebase please or send pull request with your changes so we know the status. Also look at https://github.com/Atavism-Community/Atavism-Wordpress-Integration/tree/dev-1.0.3 and let us know what is what.
+
+# quick starter lis
 Add license the github way.
 Add some git flow tips for folks that don't know.
 most of that can be a wiki page with some links.
